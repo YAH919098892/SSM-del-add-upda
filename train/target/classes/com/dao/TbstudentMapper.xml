@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.TbstudentMapper">
+<!--    增加-->
+    <insert id="addStudent" parameterType="com.pojo.Tbstudent">
+        insert into dbstudent.tbstudent(no, name, gender, birthdate, hometown, classid, idcard)
+        value (#{no},#{name},#{gender},#{birthdate},#{hometown},#{classid},#{idcard})
+    </insert>
+<!--    删除-->
+    <delete id="delectStudentByNo" parameterType="String" >
+        delete from dbstudent.tbstudent where no=#{no}
+    </delete>
+<!--   修改 -->
+    <update id="updateStudent" parameterType="com.pojo.Tbstudent">
+        update dbstudent.tbstudent
+        set NAME=#{name},GENDER=#{gender},BIRTHDATE=#{birthdate},HOMETOWN=#{hometown},IDCARD=#{idcard} where CLASSID=#{classid}
+    </update>
+
+
+<!--   查询 -->
+    <select id="selectStudent" resultType="com.pojo.Tbstudent">
+        select * from tbstudent
+    </select>
+
+    <select id="selectStudentOne" resultType="com.pojo.Tbstudent">
+        select * from tbstudent where no=#{no}
+    </select>
+</mapper>
